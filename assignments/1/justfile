@@ -1,0 +1,9 @@
+_default:
+  @just --choose
+
+run file:
+	nasm -f elf64 {{file}} -o obj.o
+	ld obj.o -o exec
+	./exec; echo "Exit code: " $?; rm -rf obj.o exec
+
+
